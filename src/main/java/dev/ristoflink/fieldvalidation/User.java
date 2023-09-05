@@ -13,16 +13,21 @@ public class User {
     @NotBlank(message = "First name cannot be blank.")
     @Size(min = 2, message = "First name too short.")
     private String firstName;
+
     @NotBlank(message = "Last name cannot be blank.")
     @Size(min = 2, message = "Last name too short.")
     private String lastName;
+
     @NotBlank(message = "Username cannot be blank.")
     @Size(min = 7, message = "Username is too short.")
     private String userName;
-    @Email
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+    @NotBlank(message = "Email cannot be blank.")
+    @Email(message = "Invalid address.")
     private String email;
-    @Past
+
+    @Past(message = "Date of birth must be in the past.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     public User(String firstName, String lastName, String userName, String email, Date dateOfBirth) {

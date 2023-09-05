@@ -8,17 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class FieldController {
-    User user = new User();
-    List<User> users = new ArrayList<>();
-
     @GetMapping("/")
     public String getForm(Model model) {
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return "sign-up";
     }
 
@@ -29,10 +23,12 @@ public class FieldController {
 
     @PostMapping("/submitItem")
     public String handleSubmit(@Valid User user, BindingResult result) {
+        if (user.getFirstName().equals(user.getLastName())) {
+            result.rejectValue("lastName", "", "Please enter valid data.");
+        }
         if (result.hasErrors()) {
             return "sign-up";
         }
-        users.add(user);
         return "redirect:/result";
     }
 }
