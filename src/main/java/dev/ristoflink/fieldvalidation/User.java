@@ -26,6 +26,7 @@ public class User {
     @Email(message = "Invalid address.")
     private String email;
 
+    @Age(message = "Must be at least 18.")
     @Past(message = "Date of birth must be in the past.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
