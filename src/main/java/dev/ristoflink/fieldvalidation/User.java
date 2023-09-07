@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import dev.ristoflink.validation.Age;
+import dev.ristoflink.validation.Username;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -20,6 +22,7 @@ public class User {
 
     @NotBlank(message = "Username cannot be blank.")
     @Size(min = 7, message = "Username is too short.")
+    @Username(message = "Cannot contain special or upper-case characters.")
     private String userName;
 
     @NotBlank(message = "Email cannot be blank.")

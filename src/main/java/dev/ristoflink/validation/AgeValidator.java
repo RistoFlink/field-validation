@@ -1,4 +1,4 @@
-package dev.ristoflink.fieldvalidation;
+package dev.ristoflink.validation;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;

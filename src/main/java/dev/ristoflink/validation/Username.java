@@ -1,4 +1,4 @@
-package dev.ristoflink.fieldvalidation;
+package dev.ristoflink.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,12 +10,11 @@ import jakarta.validation.Payload;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = AgeValidator.class)
-public @interface Age {
-    String message() default "INVALID AGE";
+@Constraint(validatedBy = UsernameValidator.class)
+public @interface Username {
+    String message() default "INVALID USERNAME";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }
